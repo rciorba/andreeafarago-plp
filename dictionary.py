@@ -16,7 +16,8 @@ for line in file:
     value = splitline[2]
     passdictionary[key]=value
 
-for i in sorted(passdictionary.keys()):
+sorted_dictionary_by_keys = sorted(passdictionary.keys())
+for i in sorted_dictionary_by_keys:
    print i +" = "+ passdictionary[i]
 
 
