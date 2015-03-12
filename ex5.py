@@ -10,7 +10,7 @@ def get_dictionary(word_list):
     # use "key in dict" insted, it's much faster
     # using timeit we can see the difference,
     # from micro seconds to nano seconds
-    # abouts 1000 times slower
+    # abouts 100 times slower
     # In [6]: %timeit "spam" in d.keys()
     # 100000 loops, best of 3: 2.12 µs per loop
     # In [7]: %timeit "spam" in d
@@ -24,12 +24,13 @@ def get_dictionary(word_list):
   return word_dictionary
 
 
-def get_max(array):
-  maxim=array[0]
-  for elem in array:
+def get_max(pairs):
+  max_key, maxim = paris[0]
+  for key, elem in pairs:
     if elem>maxim:
       maxim=elem
-  return maxim
+      max_key=key
+  return max_key, maxim
 
 
 try:
@@ -47,11 +48,16 @@ for line in file.read().splitlines():
 
 print words_list
 print get_dictionary(words_list)
+# for key, value in word_dictionary.items():
+#     # get_max gets called an awful lot
+#     if value == get_max(word_dictionary.values()):
+#         print 'The word with the most occurrences is ' + str(key) + '. It has ' + str(value) + ' occurances.'
+
+max_ = get_max(word_dictionary.iteritems())
 for key, value in word_dictionary.items():
     # get_max gets called an awful lot
-    if value == get_max(word_dictionary.values()):
-        print 'The word with the most occurrences is ' + str(key) + '. It has ' + str(value) + ' occurances.'
-
+    if value == max_:
+        print 'The word with the most occurrences is ' + str(key) + '. It has ' + str(value) + ' occ
 
 
 
