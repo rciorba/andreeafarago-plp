@@ -28,7 +28,7 @@ except IOError:
 for line in file.read().splitlines():
   for word in line.split(' '):
     #print word.lower().translate(None, digits)
-    stripped_list = ''.join(i for i in word.lower().strip() if i.isalpha())
+    stripped_list = ''.join(i for i in word.lower() if i.isalpha())
     words_list.append(stripped_list)
 
 
